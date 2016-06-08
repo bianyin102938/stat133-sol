@@ -1,0 +1,138 @@
+---
+title: "lab1 solutions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+__These solutions represent neither the most efficient way nor the most succinct of answering the questions but rather the most straightforward way of answering them with the knowledge you currently possess.__ 
+
+Answer the following questions programmatically.  You should submit a `.R` file to bCourses and upload a copy of your work to your GitHub account.
+
+# Data
+Here is some data about the Raiders during a particular superbowl season
+
+```{r raiders}
+scored <- c(14, 14, 9, 14, 28, 13, 13, 24, 17, 6, 24, 0, 24, 13, 26, 14)
+against <- c(19, 30, 16, 38, 31, 24, 23, 30, 41, 13, 20, 52, 13, 31, 24, 47)
+```
+
+# Part 1
+These questions refer to the vector `scored`
+
+1. How many points did the Raiders score in game 7?
+```{r}
+scored[7]
+```
+
+2. What was the score of the first 5 games?
+```{r}
+scored[seq(1, 5)]
+```
+
+3. What were the scores of the even games? Try to do this problem without typing in c(2,4,...)
+```{r}
+scored[seq(2, length(scored), 2)]
+```
+
+4. What was the score of the last game? Try to do this problem without typing in the number of the last game.
+```{r}
+scored[length(scored)]
+
+# not yet covered tail function
+tail(scored, 1)
+```
+
+5. Select the scores higher than 14.
+```{r}
+scored[scored > 14]
+```
+
+6. Select the scores equal to 14.
+```{r}
+scored[scored == 14]
+```
+
+7. Select the scores equal to 13 or 14.
+```{r}
+scored[scored == 13 | scored == 14]
+
+# not yet covered %in% infix operator
+scored[scored %in% c(13, 14)]
+```
+
+8. Select the scores between between 7 and 21 points.
+```{r}
+scored[scored > 7 | scored < 21]
+```
+
+9. Sort the scores in decreasing order.
+```{r}
+sort(scored, decreasing = T)
+```
+
+10. What was the highest score achieved?
+```{r}
+max(scored)
+```
+
+11. What was the lowest score achieved?
+```{r}
+min(scored)
+```
+
+12. What was the average score?
+```{r}
+mean(scored)
+```
+
+13. Use the `summary()` function to give some summary statistics.
+```{r}
+summary(scored)
+```
+
+14. In how many games did the Raiders score over 20 points?
+```{r}
+length(scored[scored > 20])
+
+# interesting use of how R handles logicals (not yet covered)
+sum(scored > 20)
+```
+
+# Part 2
+These questions refer to both vectors.
+
+1. What was the sum of the scores in game 7?
+```{r}
+scored[7] + against[7]
+```
+
+2. What was the sum of the scores in each of the last 5 games?
+```{r}
+(scored + against)[seq(length(scored) - 4, length(scored))]
+
+# more succinct way using tail function (not yet covered)
+tail(scored + against, 5)
+```
+
+3. What was the difference in scores in each of the odd games?
+```{r}
+abs(scored - against)[seq(1, length(scored), 2)]
+```
+
+4. Which games did the Raiders win?
+```{r}
+idx <- seq(1, length(scored)) # indices to subset
+idx[scored > against]
+
+# more succinct way using not yet covered which function
+which(scored > against)
+```
+
+5. Were there any ties?
+```{r}
+# any checks to see if any value in the vector is TRUE
+any(scored == against)
+```
