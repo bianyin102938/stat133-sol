@@ -174,8 +174,8 @@ scored[scored %in% c(13, 14)]</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Select the scores between between 7 and 21 points.</li>
 </ol>
-<pre class="r"><code>scored[scored &gt; 7 | scored &lt; 21]</code></pre>
-<pre><code>##  [1] 14 14  9 14 28 13 13 24 17  6 24  0 24 13 26 14</code></pre>
+<pre class="r"><code>scored[scored &gt; 7 &amp; scored &lt; 21]</code></pre>
+<pre><code>## [1] 14 14  9 14 13 13 17 13 14</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Sort the scores in decreasing order.</li>
 </ol>

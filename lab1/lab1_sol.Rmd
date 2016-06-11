@@ -65,7 +65,7 @@ scored[scored %in% c(13, 14)]
 
 8. Select the scores between between 7 and 21 points.
 ```{r}
-scored[scored > 7 | scored < 21]
+scored[scored > 7 & scored < 21]
 ```
 
 9. Sort the scores in decreasing order.
